@@ -81,7 +81,7 @@ const handleTypeReference = (interfaceName: string) => (fieldName: string) => (t
   const typeArgs = (type.typeArguments) ? handleTypeArguments(interfaceName)(fieldName)(type.typeArguments) : []
   const typeName = ((fieldTypeNameReplacements[tmpName]) ? fieldTypeNameReplacements[tmpName] : tmpName)
   if(typeName === "React") return { name : "JSX", foreignData : [ "JSX" ] }
-  if(typeName === "CSS") return { name : "CSS", foreignData : [ "CSS" ] }
+  if(typeName === "Styles") return { name : "Styles", foreignData : [ "Styles" ] }
   if(typeName === "NativeSyntheticEvent") return { name : "NativeSyntheticEvent", foreignData : [ "NativeSyntheticEvent" ] }
   if(typeName === "ListRenderItem") return { name : "ListRenderItem", foreignData : [ "ListRenderItem" ] }
   const name = (typeArgs.length > 0) ? `(${typeName} ${typeArgs.map(f => f.name).join(" ")})` : typeName

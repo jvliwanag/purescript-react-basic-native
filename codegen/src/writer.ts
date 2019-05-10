@@ -112,8 +112,8 @@ import Effect (Effect)
 import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, EffectFn4)
 import Prim.Row (class Union)
 import React.Basic (JSX)
-import React.Basic.DOM.Internal (CSS)
 import React.Basic.Events (EventHandler)
 import React.Basic.Native.Internal (unsafeCreateNativeElement)
+import React.Basic.Native.Styles (Styles)
 
 `

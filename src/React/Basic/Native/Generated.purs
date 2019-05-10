@@ -11,9 +11,9 @@ import Effect (Effect)
 import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, EffectFn4)
 import Prim.Row (class Union)
 import React.Basic (JSX)
-import React.Basic.DOM.Internal (CSS)
 import React.Basic.Events (EventHandler)
 import React.Basic.Native.Internal (unsafeCreateNativeElement)
+import React.Basic.Native.Styles (Styles)
 
 
 foreign import data ARTRenderableMixinStrokeCap :: Type
@@ -202,7 +202,7 @@ shape props = unsafeCreateNativeElement "Shape" props
 
 type ARTSurfaceProps_optional = 
   ( key :: String
-  , style :: CSS
+  , style :: Styles
   , children :: Array JSX
   )
 
@@ -304,7 +304,7 @@ type ActivityIndicatorIOSProps =
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
   , size :: ActivityIndicatorIOSPropsSize
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -369,7 +369,7 @@ type ActivityIndicatorProps =
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
   , size :: ActivityIndicatorPropsSize
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -458,7 +458,7 @@ type DatePickerIOSProps_optional =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , timeZoneOffsetInMinutes :: Number
   , children :: Array JSX
@@ -533,7 +533,7 @@ type DrawerLayoutAndroidProps_optional =
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
   , statusBarBackgroundColor :: String
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -578,8 +578,8 @@ type FlatListProps_optional =
   , canCancelContentTouches :: Boolean
   , centerContent :: Boolean
   , collapsable :: Boolean
-  , columnWrapperStyle :: CSS
-  , contentContainerStyle :: CSS
+  , columnWrapperStyle :: Styles
+  , contentContainerStyle :: Styles
   , contentInset :: Insets
   , contentInsetAdjustmentBehavior :: ScrollViewPropsIOSContentInsetAdjustmentBehavior
   , contentOffset :: PointPropType
@@ -666,7 +666,7 @@ type FlatListProps_optional =
   , snapToAlignment :: ScrollViewPropsIOSSnapToAlignment
   , snapToInterval :: Number
   , stickyHeaderIndices :: (Array Number)
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , updateCellsBatchingPeriod :: Number
   , viewabilityConfig :: Any
@@ -713,7 +713,7 @@ type ImageBackgroundProps_optional =
   , defaultSource :: ImagePropsBaseDefaultSource
   , fadeDuration :: Number
   , height :: Number
-  , imageStyle :: CSS
+  , imageStyle :: Styles
   , importantForAccessibility :: AccessibilityPropsAndroidImportantForAccessibility
   , loadingIndicatorSource :: ImageURISource
   , onAccessibilityTap :: (Effect Unit)
@@ -728,7 +728,7 @@ type ImageBackgroundProps_optional =
   , progressiveRenderingEnabled :: Boolean
   , resizeMethod :: ImagePropsBaseResizeMethod
   , resizeMode :: ImageResizeMode
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , width :: Number
   , children :: Array JSX
@@ -784,7 +784,7 @@ type ImageProps_optional =
   , progressiveRenderingEnabled :: Boolean
   , resizeMethod :: ImagePropsBaseResizeMethod
   , resizeMode :: ImageResizeMode
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , width :: Number
   , children :: Array JSX
@@ -808,7 +808,7 @@ type InputAccessoryViewProps =
   ( key :: String
   , backgroundColor :: String
   , nativeID :: String
-  , style :: CSS
+  , style :: Styles
   , children :: Array JSX
   )
 
@@ -840,7 +840,7 @@ type KeyboardAvoidingViewProps =
   , accessible :: Boolean
   , behavior :: KeyboardAvoidingViewPropsBehavior
   , collapsable :: Boolean
-  , contentContainerStyle :: CSS
+  , contentContainerStyle :: Styles
   , enabled :: Boolean
   , hitSlop :: Insets
   , importantForAccessibility :: AccessibilityPropsAndroidImportantForAccessibility
@@ -872,7 +872,7 @@ type KeyboardAvoidingViewProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -911,7 +911,7 @@ type ListViewProps_optional =
   , canCancelContentTouches :: Boolean
   , centerContent :: Boolean
   , collapsable :: Boolean
-  , contentContainerStyle :: CSS
+  , contentContainerStyle :: Styles
   , contentInset :: Insets
   , contentInsetAdjustmentBehavior :: ScrollViewPropsIOSContentInsetAdjustmentBehavior
   , contentOffset :: PointPropType
@@ -989,7 +989,7 @@ type ListViewProps_optional =
   , snapToInterval :: Number
   , stickyHeaderIndices :: (Array Number)
   , stickySectionHeadersEnabled :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , zoomScale :: Number
   , children :: Array JSX
@@ -1071,7 +1071,7 @@ type MapViewProps =
   , showsCompass :: Boolean
   , showsPointsOfInterest :: Boolean
   , showsUserLocation :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , zoomEnabled :: Boolean
   , children :: Array JSX
@@ -1133,7 +1133,7 @@ type MaskedViewIOSProps_optional =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -1156,10 +1156,10 @@ type NavigatorIOSProps_optional =
   ( key :: String
   , barTintColor :: String
   , interactivePopGestureEnabled :: Boolean
-  , itemWrapperStyle :: CSS
+  , itemWrapperStyle :: Styles
   , navigationBarHidden :: Boolean
   , shadowHidden :: Boolean
-  , style :: CSS
+  , style :: Styles
   , tintColor :: String
   , titleTextColor :: String
   , translucent :: Boolean
@@ -1216,7 +1216,7 @@ type PickerIOSProps =
   , collapsable :: Boolean
   , hitSlop :: Insets
   , importantForAccessibility :: AccessibilityPropsAndroidImportantForAccessibility
-  , itemStyle :: CSS
+  , itemStyle :: Styles
   , nativeID :: String
   , needsOffscreenAlphaCompositing :: Boolean
   , onAccessibilityAction :: (Effect Unit)
@@ -1246,7 +1246,7 @@ type PickerIOSProps =
   , renderToHardwareTextureAndroid :: Boolean
   , selectedValue :: String
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -1303,7 +1303,7 @@ type PickerProps =
   , enabled :: Boolean
   , hitSlop :: Insets
   , importantForAccessibility :: AccessibilityPropsAndroidImportantForAccessibility
-  , itemStyle :: CSS
+  , itemStyle :: Styles
   , mode :: PickerPropsAndroidMode
   , nativeID :: String
   , needsOffscreenAlphaCompositing :: Boolean
@@ -1335,7 +1335,7 @@ type PickerProps =
   , renderToHardwareTextureAndroid :: Boolean
   , selectedValue :: Any
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , testId :: String
   , children :: Array JSX
@@ -1400,7 +1400,7 @@ type ProgressBarAndroidProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , styleAttr :: ProgressBarAndroidPropsStyleAttr
   , testID :: String
   , children :: Array JSX
@@ -1466,7 +1466,7 @@ type ProgressViewIOSProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , trackImage :: ProgressViewIOSPropsTrackImage
   , trackTintColor :: String
@@ -1507,7 +1507,7 @@ type RecyclerViewBackedScrollViewProps =
   , canCancelContentTouches :: Boolean
   , centerContent :: Boolean
   , collapsable :: Boolean
-  , contentContainerStyle :: CSS
+  , contentContainerStyle :: Styles
   , contentInset :: Insets
   , contentInsetAdjustmentBehavior :: ScrollViewPropsIOSContentInsetAdjustmentBehavior
   , contentOffset :: PointPropType
@@ -1572,7 +1572,7 @@ type RecyclerViewBackedScrollViewProps =
   , snapToAlignment :: ScrollViewPropsIOSSnapToAlignment
   , snapToInterval :: Number
   , stickyHeaderIndices :: (Array Number)
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , zoomScale :: Number
   , children :: Array JSX
@@ -1640,7 +1640,7 @@ type RefreshControlProps_optional =
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
   , size :: Number
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , tintColor :: String
   , title :: String
@@ -1684,7 +1684,7 @@ type ScrollViewProps =
   , canCancelContentTouches :: Boolean
   , centerContent :: Boolean
   , collapsable :: Boolean
-  , contentContainerStyle :: CSS
+  , contentContainerStyle :: Styles
   , contentInset :: Insets
   , contentInsetAdjustmentBehavior :: ScrollViewPropsIOSContentInsetAdjustmentBehavior
   , contentOffset :: PointPropType
@@ -1749,7 +1749,7 @@ type ScrollViewProps =
   , snapToAlignment :: ScrollViewPropsIOSSnapToAlignment
   , snapToInterval :: Number
   , stickyHeaderIndices :: (Array Number)
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , zoomScale :: Number
   , children :: Array JSX
@@ -1816,7 +1816,7 @@ type SegmentedControlIOSProps =
   , renderToHardwareTextureAndroid :: Boolean
   , selectedIndex :: Number
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , tintColor :: String
   , values :: (Array String)
@@ -1889,7 +1889,7 @@ type SliderProps =
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
   , step :: Number
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , thumbImage :: ImageURISource
   , thumbTintColor :: String
@@ -1954,7 +1954,7 @@ type SnapshotViewIOSProps_optional =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -2066,7 +2066,7 @@ type SwitchIOSProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , thumbTintColor :: String
   , tintColor :: String
@@ -2134,7 +2134,7 @@ type SwitchProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , thumbColor :: String
   , thumbTintColor :: String
@@ -2207,7 +2207,7 @@ type TabBarIOSItemProps =
   , selected :: Boolean
   , selectedIcon :: ImageURISource
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , systemIcon :: TabBarIOSItemPropsSystemIcon
   , testID :: String
   , title :: String
@@ -2272,7 +2272,7 @@ type TabBarIOSProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , tintColor :: String
   , translucent :: Boolean
@@ -2380,7 +2380,7 @@ type TextInputProps =
   , selectionState :: DocumentSelectionState
   , shouldRasterizeIOS :: Boolean
   , spellCheck :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , textBreakStrategy :: TextInputAndroidPropsTextBreakStrategy
   , textContentType :: TextInputIOSPropsTextContentType
@@ -2428,7 +2428,7 @@ type TextProps =
   , onPress :: EventHandler
   , selectable :: Boolean
   , selectionColor :: String
-  , style :: CSS
+  , style :: Styles
   , suppressHighlighting :: Boolean
   , testID :: String
   , textBreakStrategy :: TextPropsAndroidTextBreakStrategy
@@ -2500,7 +2500,7 @@ type ToolbarAndroidProps =
   , renderToHardwareTextureAndroid :: Boolean
   , rtl :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , subtitle :: String
   , subtitleColor :: String
   , testID :: String
@@ -2550,7 +2550,7 @@ type TouchableHighlightProps =
   , onPressOut :: EventHandler
   , onShowUnderlay :: (Effect Unit)
   , pressRetentionOffset :: Insets
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , underlayColor :: String
   , children :: Array JSX
@@ -2595,7 +2595,7 @@ type TouchableNativeFeedbackProps =
   , onPressIn :: EventHandler
   , onPressOut :: EventHandler
   , pressRetentionOffset :: Insets
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , useForeground :: Boolean
   , children :: Array JSX
@@ -2640,7 +2640,7 @@ type TouchableOpacityProps =
   , onPressIn :: EventHandler
   , onPressOut :: EventHandler
   , pressRetentionOffset :: Insets
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -2683,7 +2683,7 @@ type TouchableWithoutFeedbackProps =
   , onPressIn :: EventHandler
   , onPressOut :: EventHandler
   , pressRetentionOffset :: Insets
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -2751,7 +2751,7 @@ type ViewPagerAndroidProps =
   , renderToHardwareTextureAndroid :: Boolean
   , scrollEnabled :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -2812,7 +2812,7 @@ type ViewProps =
   , removeClippedSubviews :: Boolean
   , renderToHardwareTextureAndroid :: Boolean
   , shouldRasterizeIOS :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , children :: Array JSX
   )
@@ -2912,7 +2912,7 @@ type WebViewProps =
   , shouldRasterizeIOS :: Boolean
   , source :: WebViewPropsSource
   , startInLoadingState :: Boolean
-  , style :: CSS
+  , style :: Styles
   , testID :: String
   , url :: String
   , useWebKit :: Boolean
