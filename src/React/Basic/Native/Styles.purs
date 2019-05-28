@@ -301,3 +301,15 @@ instance rmCenter :: CenterEnum ResizeMode where
 
 resizeMode :: ResizeMode -> StyleProp
 resizeMode = unsafeStyleProp "resizeMode"
+
+shadowColor :: String -> StyleProp
+shadowColor = unsafeStyleProp "shadowColor"
+
+shadowOffset :: { width :: Number, height :: Number } -> StyleProp
+shadowOffset = unsafeStyleProp "shadowOffset"
+
+shadowOpacity :: Number -> StyleProp
+shadowOpacity = unsafeStyleProp "shadowOpacity"
+
+shadowRadius :: Number -> StyleProp
+shadowRadius = unsafeStyleProp "shadowRadius"
