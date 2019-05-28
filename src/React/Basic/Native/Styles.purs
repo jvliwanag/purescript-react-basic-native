@@ -17,6 +17,7 @@ module React.Basic.Native.Styles (
 , opacity, elevation, zIndex
 , ResizeMode, cover, contain, stretch, repeat, resizeMode
 , hairlineWidth
+, shadowColor, shadowOffset, shadowOpacity, shadowRadius
 ) where
 
 import React.Basic.Native.PropTypes (class CenterEnum, class VisibilityEnum)
