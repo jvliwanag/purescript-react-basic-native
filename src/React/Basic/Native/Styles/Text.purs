@@ -169,8 +169,14 @@ androidTextAlignVertical = unsafeStyleProp "textAlignVertical"
 iosFontVariant :: FontVariant -> StyleProp
 iosFontVariant = unsafeStyleProp "fontVariant"
 
-iosLetterSpacing :: Int -> StyleProp
-iosLetterSpacing = unsafeStyleProp "letterSpacing"
+class LetterSpacing a where
+  letterSpacing :: a -> StyleProp
+
+instance intLetterSpacing :: LetterSpacing Int where
+  letterSpacing = unsafeStyleProp "letterSpacing"
+
+instance numberLetterSpacing :: LetterSpacing Number where
+  letterSpacing = unsafeStyleProp "letterSpacing"
 
 iosTextDecorationColor :: Color -> StyleProp
 iosTextDecorationColor = unsafeStyleProp "textDecorationColor"
