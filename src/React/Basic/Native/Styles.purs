@@ -5,9 +5,10 @@ module React.Basic.Native.Styles (
 , Position, absolute, relative, position
 , BorderStyle, solid, dotted, dashed, borderStyle
 , backgroundColor, flex, flexBasis
-, left, right, top, bottom
+, class Left, class Right, class Top, class Bottom, left, right, top, bottom
 , margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical
-, width, height, maxHeight, maxWidth, minHeight, minWidth
+, Percent, percent
+, class Width, class Height, width, height, maxHeight, maxWidth, minHeight, minWidth
 , Overflow, scroll, overflow
 , padding, paddingBottom, paddingHorizontal, paddingLeft, paddingRight, paddingTop, paddingVertical
 , BackfaceVisibility, backfaceVisibility
@@ -19,6 +20,8 @@ module React.Basic.Native.Styles (
 , hairlineWidth
 , shadowColor, shadowOffset, shadowOpacity, shadowRadius
 ) where
+
+import Prelude
 
 import React.Basic.Native.PropTypes (class CenterEnum, class VisibilityEnum)
 import React.Basic.Native.PropTypes.Color (Color)
@@ -44,7 +47,6 @@ styles' = unsafeCoerce
 
 foreign import hairlineWidth :: Int
 
-
 -- | position in React Native is similar to regular CSS, but everything is set to relative by default, so absolute positioning is always just relative to the parent.
 -- | If you want to position a child using specific numbers of logical pixels relative to its parent, set the child to have absolute position.
 -- | If you want to position a child relative to something that is not its parent, just don't use styles for that. Use the component tree.
@@ -66,26 +68,63 @@ backgroundColor = unsafeStyleProp "backgroundColor"
 -- | left is the number of logical pixels to offset the left edge of this component.
 -- | It works similarly to left in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
 -- | See https://developer.mozilla.org/en-US/docs/Web/CSS/left for more details of how left affects layout.
-left :: Int -> StyleProp
-left = unsafeStyleProp "left"
+class Left a where
+  left :: a -> StyleProp
+
+instance intLeft :: Left Int where
+  left = unsafeStyleProp "left"
+
+instance numberLeft :: Left Number where
+  left = unsafeStyleProp "left"
+
+instance percentLeft :: Left Percent where
+  left = unsafeStyleProp "left"
 
 -- | right is the number of logical pixels to offset the right edge of this component.
 -- | It works similarly to right in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
 -- | See https://developer.mozilla.org/en-US/docs/Web/CSS/right for more details of how right affects layout.
-right :: Int -> StyleProp
-right = unsafeStyleProp "right"
+class Right a where
+  right :: a -> StyleProp
+
+instance intRight :: Right Int where
+  right = unsafeStyleProp "right"
+
+instance numberRight :: Right Number where
+  right = unsafeStyleProp "right"
+
+instance percentRight :: Right Percent where
+  right = unsafeStyleProp "right"
 
 -- | top is the number of logical pixels to offset the top edge of this component.
 -- | It works similarly to top in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
 -- | See https://developer.mozilla.org/en-US/docs/Web/CSS/top for more details of how top affects layout.
-top :: Int -> StyleProp
-top = unsafeStyleProp "top"
+class Top a where
+  top :: a -> StyleProp
+
+instance intTop :: Top Int where
+  top = unsafeStyleProp "top"
+
+instance numberTop :: Top Number where
+  top = unsafeStyleProp "top"
+
+instance percentTop :: Top Percent where
+  top = unsafeStyleProp "top"
 
 -- | bottom is the number of logical pixels to offset the bottom edge of this component.
 -- | It works similarly to bottom in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
 -- | See https://developer.mozilla.org/en-US/docs/Web/CSS/bottom for more details of how bottom affects layout.
-bottom :: Int -> StyleProp
-bottom = unsafeStyleProp "bottom"
+class Bottom a where
+  bottom :: a -> StyleProp
+
+instance intBottom :: Bottom Int where
+  bottom = unsafeStyleProp "bottom"
+
+instance numberBottom :: Bottom Number where
+  bottom = unsafeStyleProp "bottom"
+
+instance percentBottom :: Bottom Percent where
+  bottom = unsafeStyleProp "bottom"
+
 
 flex :: Int -> StyleProp
 flex = unsafeStyleProp "flex"
@@ -124,15 +163,41 @@ marginTop = unsafeStyleProp "marginTop"
 marginVertical :: Int -> StyleProp
 marginVertical = unsafeStyleProp "marginVertical"
 
+newtype Percent = Percent String
+
+percent :: Int -> Percent
+percent a = Percent (show a <> "%")
+
 -- | width sets the width of this component.
 -- | It works similarly to width in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See https://developer.mozilla.org/en-US/docs/Web/CSS/width for more details.
-width :: Int -> StyleProp
-width = unsafeStyleProp "width"
+class Width a where
+  width :: a -> StyleProp
+
+instance intWidth :: Width Int where
+  width = unsafeStyleProp "width"
+
+instance numberWidth :: Width Number where
+  width = unsafeStyleProp "width"
+
+instance percentWidth :: Width Percent where
+  width = unsafeStyleProp "width"
+
+-- width :: Int -> StyleProp
+-- width = unsafeStyleProp "width"
 
 -- | height sets the height of this component.
 -- | It works similarly to height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See https://developer.mozilla.org/en-US/docs/Web/CSS/height for more details.
-height :: Int -> StyleProp
-height = unsafeStyleProp "height"
+class Height a where
+  height :: a -> StyleProp
+
+instance intHeight :: Height Int where
+  height = unsafeStyleProp "height"
+
+instance numberHeight :: Height Number where
+  height = unsafeStyleProp "height"
+
+instance percentHeight :: Height Percent where
+  height = unsafeStyleProp "height"
 
 -- | maxHeight is the maximum height for this component, in logical pixels.
 -- | It works similarly to max-height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
