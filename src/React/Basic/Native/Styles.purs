@@ -199,10 +199,8 @@ instance numberHeight :: Height Number where
 instance percentHeight :: Height Percent where
   height = unsafeStyleProp "height"
 
--- | maxHeight is the maximum height for this component, in logical pixels.
--- | It works similarly to max-height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/max-height for more details.
 
+-- | see: https://facebook.github.io/react-native/docs/layout-props#maxheight
 class MaxHeight a where
   maxHeight :: a -> StyleProp
 
@@ -215,9 +213,7 @@ instance numberMaxHeight :: MaxHeight Number where
 instance percentMaxHeight :: MaxHeight Percent where
   maxHeight = unsafeStyleProp "maxHeight"
 
--- | maxWidth is the maximum width for this component, in logical pixels.
--- | It works similarly to max-width in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/max-width for more details.
+-- | see: https://facebook.github.io/react-native/docs/layout-props#maxwidth
 class MaxWidth a where
   maxWidth :: a -> StyleProp
 
@@ -231,9 +227,7 @@ instance percentMaxWidth :: MaxWidth Percent where
   maxWidth = unsafeStyleProp "maxWidth"
 
 
--- | minHeight is the minimum height for this component, in logical pixels.
--- | It works similarly to min-height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/min-height for more details.
+-- | see: https://facebook.github.io/react-native/docs/layout-props#minheight
 class MinHeight a where
   minHeight :: a -> StyleProp
 
@@ -246,9 +240,7 @@ instance numberMinHeight :: MinHeight Number where
 instance percentMinHeight :: MinHeight Percent where
   minHeight = unsafeStyleProp "minHeight"
 
--- | minWidth is the minimum width for this component, in logical pixels.
--- | It works similarly to min-width in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/min-width for more details.
+-- | see: https://facebook.github.io/react-native/docs/layout-props#minwidth
 class MinWidth a where
   minWidth :: a -> StyleProp
 
