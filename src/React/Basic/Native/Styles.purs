@@ -8,7 +8,8 @@ module React.Basic.Native.Styles (
 , class Left, class Right, class Top, class Bottom, left, right, top, bottom
 , margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical
 , Percent, percent
-, class Width, class Height, width, height, maxHeight, maxWidth, minHeight, minWidth
+, class Width, class Height, width, height
+, class MaxHeight, maxHeight, class MaxWidth, maxWidth, class MinHeight, minHeight, class MinWidth, minWidth
 , Overflow, scroll, overflow
 , padding, paddingBottom, paddingHorizontal, paddingLeft, paddingRight, paddingTop, paddingVertical
 , BackfaceVisibility, backfaceVisibility
