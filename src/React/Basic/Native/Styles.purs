@@ -199,29 +199,59 @@ instance numberHeight :: Height Number where
 instance percentHeight :: Height Percent where
   height = unsafeStyleProp "height"
 
--- | maxHeight is the maximum height for this component, in logical pixels.
--- | It works similarly to max-height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/max-height for more details.
-maxHeight :: Int -> StyleProp
-maxHeight = unsafeStyleProp "maxHeight"
 
--- | maxWidth is the maximum width for this component, in logical pixels.
--- | It works similarly to max-width in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/max-width for more details.
-maxWidth :: Int -> StyleProp
-maxWidth = unsafeStyleProp "maxWidth"
+-- | see: https://facebook.github.io/react-native/docs/layout-props#maxheight
+class MaxHeight a where
+  maxHeight :: a -> StyleProp
 
--- | minHeight is the minimum height for this component, in logical pixels.
--- | It works similarly to min-height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/min-height for more details.
-minHeight :: Int -> StyleProp
-minHeight = unsafeStyleProp "minHeight"
+instance intMaxHeight :: MaxHeight Int where
+  maxHeight = unsafeStyleProp "maxHeight"
 
--- | minWidth is the minimum width for this component, in logical pixels.
--- | It works similarly to min-width in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that.
--- | See https://developer.mozilla.org/en-US/docs/Web/CSS/min-width for more details.
-minWidth :: Int -> StyleProp
-minWidth = unsafeStyleProp "minWidth"
+instance numberMaxHeight :: MaxHeight Number where
+  maxHeight = unsafeStyleProp "maxHeight"
+
+instance percentMaxHeight :: MaxHeight Percent where
+  maxHeight = unsafeStyleProp "maxHeight"
+
+-- | see: https://facebook.github.io/react-native/docs/layout-props#maxwidth
+class MaxWidth a where
+  maxWidth :: a -> StyleProp
+
+instance intMaxWidth :: MaxWidth Int where
+  maxWidth = unsafeStyleProp "maxWidth"
+
+instance numberMaxWidth :: MaxWidth Number where
+  maxWidth = unsafeStyleProp "maxWidth"
+
+instance percentMaxWidth :: MaxWidth Percent where
+  maxWidth = unsafeStyleProp "maxWidth"
+
+
+-- | see: https://facebook.github.io/react-native/docs/layout-props#minheight
+class MinHeight a where
+  minHeight :: a -> StyleProp
+
+instance intMinHeight :: MinHeight Int where
+  minHeight = unsafeStyleProp "minHeight"
+
+instance numberMinHeight :: MinHeight Number where
+  minHeight = unsafeStyleProp "minHeight"
+
+instance percentMinHeight :: MinHeight Percent where
+  minHeight = unsafeStyleProp "minHeight"
+
+-- | see: https://facebook.github.io/react-native/docs/layout-props#minwidth
+class MinWidth a where
+  minWidth :: a -> StyleProp
+
+instance intMinWidth :: MinWidth Int where
+  minWidth = unsafeStyleProp "minWidth"
+
+instance numberMinWidth :: MinWidth Number where
+  minWidth = unsafeStyleProp "minWidth"
+
+instance percentMinWidth :: MinWidth Percent where
+  minWidth = unsafeStyleProp "minWidth"
 
 newtype Overflow = Overflow String
 
