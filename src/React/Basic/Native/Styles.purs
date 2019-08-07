@@ -4,13 +4,16 @@ module React.Basic.Native.Styles (
 , styles, styles', staticStyles, unsafeStyleProp
 , Position, absolute, relative, position
 , BorderStyle, solid, dotted, dashed, borderStyle
-, backgroundColor, flex, flexBasis
+, backgroundColor, flex
+, class FlexBasis, flexBasis
 , class Left, class Right, class Top, class Bottom, left, right, top, bottom
+, class Margin, class MarginBottom, class MarginHorizontal, class MarginLeft, class MarginRight, class MarginTop, class MarginVertical
 , margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical
 , Percent, percent
 , class Width, class Height, width, height
 , class MaxHeight, maxHeight, class MaxWidth, maxWidth, class MinHeight, minHeight, class MinWidth, minWidth
 , Overflow, scroll, overflow
+, class Padding, class PaddingBottom, class PaddingHorizontal, class PaddingLeft, class PaddingRight, class PaddingTop, class PaddingVertical
 , padding, paddingBottom, paddingHorizontal, paddingLeft, paddingRight, paddingTop, paddingVertical
 , BackfaceVisibility, backfaceVisibility
 , borderBottomWidth, borderLeftWidth, borderRightWidth, borderTopWidth, borderWidth
@@ -130,39 +133,110 @@ instance percentBottom :: Bottom Percent where
 flex :: Int -> StyleProp
 flex = unsafeStyleProp "flex"
 
-flexBasis :: Int -> StyleProp
-flexBasis = unsafeStyleProp "flexBasis"
 
+class FlexBasis a where
+  flexBasis :: a -> StyleProp
 
+instance intFlexBasis :: FlexBasis Int where
+  flexBasis = unsafeStyleProp "flexBasis"
 
+instance numberFlexBasis :: FlexBasis Number where
+  flexBasis = unsafeStyleProp "flexBasis"
+
+instance percentFlexBasis :: FlexBasis Percent where
+  flexBasis = unsafeStyleProp "flexBasis"
 
 -- | Setting margin has the same effect as setting each of marginTop, marginLeft, marginBottom, and marginRight. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin for more details.
-margin :: Int -> StyleProp
-margin = unsafeStyleProp "margin"
+class Margin a where
+  margin :: a -> StyleProp
+
+instance intMargin :: Margin Int where
+  margin = unsafeStyleProp "margin"
+
+instance numberMargin :: Margin Number where
+  margin = unsafeStyleProp "margin"
+
+instance percentMargin :: Margin Percent where
+  margin = unsafeStyleProp "margin"
 
 -- | marginBottom works like margin-bottom in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom for more details.
-marginBottom :: Int -> StyleProp
-marginBottom = unsafeStyleProp "marginBottom"
+class MarginBottom a where
+  marginBottom :: a -> StyleProp
 
--- | Setting marginHorizontal has the same effect as setting both marginLeft and marginRight.
-marginHorizontal :: Int -> StyleProp
-marginHorizontal = unsafeStyleProp "marginHorizontal"
+instance intMarginBottom :: MarginBottom Int where
+  marginBottom = unsafeStyleProp "marginBottom"
+
+instance numberMarginBottom :: MarginBottom Number where
+  marginBottom = unsafeStyleProp "marginBottom"
+
+instance percentMarginBottom :: MarginBottom Percent where
+  marginBottom = unsafeStyleProp "marginBottom"
+
+-- | Setting marginHorizontal is like setting both of marginLeft and marginRight.
+class MarginHorizontal a where
+  marginHorizontal :: a -> StyleProp
+
+instance intMarginHorizontal :: MarginHorizontal Int where
+  marginHorizontal = unsafeStyleProp "marginHorizontal"
+
+instance numberMarginHorizontal :: MarginHorizontal Number where
+  marginHorizontal = unsafeStyleProp "marginHorizontal"
+
+instance percentMarginHorizontal :: MarginHorizontal Percent where
+  marginHorizontal = unsafeStyleProp "marginHorizontal"
 
 -- | marginLeft works like margin-left in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left for more details.
-marginLeft :: Int -> StyleProp
-marginLeft = unsafeStyleProp "marginLeft"
+class MarginLeft a where
+  marginLeft :: a -> StyleProp
+
+instance intMarginLeft :: MarginLeft Int where
+  marginLeft = unsafeStyleProp "marginLeft"
+
+instance numberMarginLeft :: MarginLeft Number where
+  marginLeft = unsafeStyleProp "marginLeft"
+
+instance percentMarginLeft :: MarginLeft Percent where
+  marginLeft = unsafeStyleProp "marginLeft"
 
 -- | marginRight works like margin-right in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right for more details.
-marginRight :: Int -> StyleProp
-marginRight = unsafeStyleProp "marginRight"
+class MarginRight a where
+  marginRight :: a -> StyleProp
+
+instance intMarginRight :: MarginRight Int where
+  marginRight = unsafeStyleProp "marginRight"
+
+instance numberMarginRight :: MarginRight Number where
+  marginRight = unsafeStyleProp "marginRight"
+
+instance percentMarginRight :: MarginRight Percent where
+  marginRight = unsafeStyleProp "marginRight"
 
 -- | marginTop works like margin-top in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top for more details.
-marginTop :: Int -> StyleProp
-marginTop = unsafeStyleProp "marginTop"
+class MarginTop a where
+  marginTop :: a -> StyleProp
 
--- | Setting marginVertical has the same effect as setting both marginTop and marginBottom.
-marginVertical :: Int -> StyleProp
-marginVertical = unsafeStyleProp "marginVertical"
+instance intMarginTop :: MarginTop Int where
+  marginTop = unsafeStyleProp "marginTop"
+
+instance numberMarginTop :: MarginTop Number where
+  marginTop = unsafeStyleProp "marginTop"
+
+instance percentMarginTop :: MarginTop Percent where
+  marginTop = unsafeStyleProp "marginTop"
+
+-- | Setting marginVertical is like setting both of marginTop and marginBottom.
+class MarginVertical a where
+  marginVertical :: a -> StyleProp
+
+instance intMarginVertical :: MarginVertical Int where
+  marginVertical = unsafeStyleProp "marginVertical"
+
+instance numberMarginVertical :: MarginVertical Number where
+  marginVertical = unsafeStyleProp "marginVertical"
+
+instance percentMarginVertical :: MarginVertical Percent where
+  marginVertical = unsafeStyleProp "marginVertical"
+
 
 newtype Percent = Percent String
 
@@ -269,32 +343,95 @@ overflow :: Overflow -> StyleProp
 overflow = unsafeStyleProp "overflow"
 
 -- | Setting padding has the same effect as setting each of paddingTop, paddingBottom, paddingLeft, and paddingRight. See https://developer.mozilla.org/en-US/docs/Web/CSS/padding for more details.
-padding :: Int -> StyleProp
-padding = unsafeStyleProp "padding"
+class Padding a where
+  padding :: a -> StyleProp
+
+instance intPadding :: Padding Int where
+  padding = unsafeStyleProp "padding"
+
+instance numberPadding :: Padding Number where
+  padding = unsafeStyleProp "padding"
+
+instance percentPadding :: Padding Percent where
+  padding = unsafeStyleProp "padding"
 
 -- | paddingBottom works like padding-bottom in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom for more details.
-paddingBottom :: Int -> StyleProp
-paddingBottom = unsafeStyleProp "paddingBottom"
+class PaddingBottom a where
+  paddingBottom :: a -> StyleProp
+
+instance intPaddingBottom :: PaddingBottom Int where
+  paddingBottom = unsafeStyleProp "paddingBottom"
+
+instance numberPaddingBottom :: PaddingBottom Number where
+  paddingBottom = unsafeStyleProp "paddingBottom"
+
+instance percentPaddingBottom :: PaddingBottom Percent where
+  paddingBottom = unsafeStyleProp "paddingBottom"
 
 -- | Setting paddingHorizontal is like setting both of paddingLeft and paddingRight.
-paddingHorizontal :: Int -> StyleProp
-paddingHorizontal = unsafeStyleProp "paddingHorizontal"
+class PaddingHorizontal a where
+  paddingHorizontal :: a -> StyleProp
+
+instance intPaddingHorizontal :: PaddingHorizontal Int where
+  paddingHorizontal = unsafeStyleProp "paddingHorizontal"
+
+instance numberPaddingHorizontal :: PaddingHorizontal Number where
+  paddingHorizontal = unsafeStyleProp "paddingHorizontal"
+
+instance percentPaddingHorizontal :: PaddingHorizontal Percent where
+  paddingHorizontal = unsafeStyleProp "paddingHorizontal"
 
 -- | paddingLeft works like padding-left in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left for more details.
-paddingLeft :: Int -> StyleProp
-paddingLeft = unsafeStyleProp "paddingLeft"
+class PaddingLeft a where
+  paddingLeft :: a -> StyleProp
+
+instance intPaddingLeft :: PaddingLeft Int where
+  paddingLeft = unsafeStyleProp "paddingLeft"
+
+instance numberPaddingLeft :: PaddingLeft Number where
+  paddingLeft = unsafeStyleProp "paddingLeft"
+
+instance percentPaddingLeft :: PaddingLeft Percent where
+  paddingLeft = unsafeStyleProp "paddingLeft"
 
 -- | paddingRight works like padding-right in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right for more details.
-paddingRight :: Int -> StyleProp
-paddingRight = unsafeStyleProp "paddingRight"
+class PaddingRight a where
+  paddingRight :: a -> StyleProp
+
+instance intPaddingRight :: PaddingRight Int where
+  paddingRight = unsafeStyleProp "paddingRight"
+
+instance numberPaddingRight :: PaddingRight Number where
+  paddingRight = unsafeStyleProp "paddingRight"
+
+instance percentPaddingRight :: PaddingRight Percent where
+  paddingRight = unsafeStyleProp "paddingRight"
 
 -- | paddingTop works like padding-top in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top for more details.
-paddingTop :: Int -> StyleProp
-paddingTop = unsafeStyleProp "paddingTop"
+class PaddingTop a where
+  paddingTop :: a -> StyleProp
+
+instance intPaddingTop :: PaddingTop Int where
+  paddingTop = unsafeStyleProp "paddingTop"
+
+instance numberPaddingTop :: PaddingTop Number where
+  paddingTop = unsafeStyleProp "paddingTop"
+
+instance percentPaddingTop :: PaddingTop Percent where
+  paddingTop = unsafeStyleProp "paddingTop"
 
 -- | Setting paddingVertical is like setting both of paddingTop and paddingBottom.
-paddingVertical :: Int -> StyleProp
-paddingVertical = unsafeStyleProp "paddingVertical"
+class PaddingVertical a where
+  paddingVertical :: a -> StyleProp
+
+instance intPaddingVertical :: PaddingVertical Int where
+  paddingVertical = unsafeStyleProp "paddingVertical"
+
+instance numberPaddingVertical :: PaddingVertical Number where
+  paddingVertical = unsafeStyleProp "paddingVertical"
+
+instance percentPaddingVertical :: PaddingVertical Percent where
+  paddingVertical = unsafeStyleProp "paddingVertical"
 
 newtype BackfaceVisibility = BackfaceVisibility String
 
