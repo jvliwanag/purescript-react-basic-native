@@ -9,7 +9,6 @@ module React.Basic.Native.Styles (
 , class Left, class Right, class Top, class Bottom, left, right, top, bottom
 , class Margin, class MarginBottom, class MarginHorizontal, class MarginLeft, class MarginRight, class MarginTop, class MarginVertical
 , margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical
-, Percent, percent
 , class Width, class Height, width, height
 , class MaxHeight, maxHeight, class MaxWidth, maxWidth, class MinHeight, minHeight, class MinWidth, minWidth
 , Overflow, scroll, overflow
@@ -23,6 +22,7 @@ module React.Basic.Native.Styles (
 , ResizeMode, cover, contain, stretch, repeat, resizeMode
 , hairlineWidth
 , shadowColor, shadowOffset, shadowOpacity, shadowRadius
+, class MkPercent, percent, Percent
 ) where
 
 import Prelude
@@ -240,8 +240,14 @@ instance percentMarginVertical :: MarginVertical Percent where
 
 newtype Percent = Percent String
 
-percent :: Int -> Percent
-percent a = Percent (show a <> "%")
+class MkPercent a where
+  percent :: a -> Percent
+
+instance percentInt :: MkPercent Int where
+  percent a = Percent (show a <> "%")
+
+instance percentNumber :: MkPercent Number where
+  percent a = Percent (show a <> "%")
 
 -- | width sets the width of this component.
 -- | It works similarly to width in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See https://developer.mozilla.org/en-US/docs/Web/CSS/width for more details.
