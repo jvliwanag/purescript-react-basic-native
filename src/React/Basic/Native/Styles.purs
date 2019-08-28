@@ -8,7 +8,7 @@ module React.Basic.Native.Styles (
 , class FlexBasis, flexBasis
 , class Left, class Right, class Top, class Bottom, left, right, top, bottom
 , class Margin, class MarginBottom, class MarginHorizontal, class MarginLeft, class MarginRight, class MarginTop, class MarginVertical
-, margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical
+, margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical, MarginAuto(..), marginAuto
 , class Width, class Height, width, height
 , class MaxHeight, maxHeight, class MaxWidth, maxWidth, class MinHeight, minHeight, class MinWidth, minWidth
 , Overflow, scroll, overflow
@@ -147,6 +147,10 @@ instance percentFlexBasis :: FlexBasis Percent where
   flexBasis = unsafeStyleProp "flexBasis"
 
 -- | Setting margin has the same effect as setting each of marginTop, marginLeft, marginBottom, and marginRight. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin for more details.
+newtype MarginAuto = MarginAuto String
+
+marginAuto = MarginAuto "auto"
+
 class Margin a where
   margin :: a -> StyleProp
 
@@ -157,6 +161,9 @@ instance numberMargin :: Margin Number where
   margin = unsafeStyleProp "margin"
 
 instance percentMargin :: Margin Percent where
+  margin = unsafeStyleProp "margin"
+
+instance autoMargin :: Margin MarginAuto where
   margin = unsafeStyleProp "margin"
 
 -- | marginBottom works like margin-bottom in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom for more details.
