@@ -1,32 +1,114 @@
 -- | React Native styles, see https://facebook.github.io/react-native/docs/style.html for the full documentation
-module React.Basic.Native.Styles (
-  Styles, StyleProp
-, styles, styles', staticStyles, unsafeStyleProp
-, Position, absolute, relative, position
-, BorderStyle, solid, dotted, dashed, borderStyle
-, backgroundColor, flex
-, class FlexBasis, flexBasis
-, class Left, class Right, class Top, class Bottom, left, right, top, bottom
-, class Margin, class MarginBottom, class MarginHorizontal, class MarginLeft, class MarginRight, class MarginTop, class MarginVertical
-, margin, marginBottom, marginHorizontal, marginLeft, marginRight, marginTop, marginVertical
-, class Width, class Height, width, height
-, class MaxHeight, maxHeight, class MaxWidth, maxWidth, class MinHeight, minHeight, class MinWidth, minWidth
-, Overflow, scroll, overflow
-, class Padding, class PaddingBottom, class PaddingHorizontal, class PaddingLeft, class PaddingRight, class PaddingTop, class PaddingVertical
-, padding, paddingBottom, paddingHorizontal, paddingLeft, paddingRight, paddingTop, paddingVertical
-, BackfaceVisibility, backfaceVisibility
-, borderBottomWidth, borderLeftWidth, borderRightWidth, borderTopWidth, borderWidth
-, borderBottomColor, borderBottomLeftRadius, borderBottomRightRadius, borderColor, borderLeftColor, borderRadius, borderRightColor
-, borderTopColor, borderTopLeftRadius, borderTopRightRadius
-, opacity, elevation, zIndex
-, ResizeMode, cover, contain, stretch, repeat, resizeMode
-, hairlineWidth
-, shadowColor, shadowOffset, shadowOpacity, shadowRadius
-, class MkPercent, percent, Percent
-) where
+module React.Basic.Native.Styles
+  ( Styles
+  , StyleProp
+  , styles
+  , styles'
+  , staticStyles
+  , unsafeStyleProp
+  , Position
+  , absolute
+  , relative
+  , position
+  , BorderStyle
+  , solid
+  , dotted
+  , dashed
+  , borderStyle
+  , backgroundColor
+  , flex
+  , class FlexBasis
+  , flexBasis
+  , class Left
+  , class Right
+  , class Top
+  , class Bottom
+  , left
+  , right
+  , top
+  , bottom
+  , class Margin
+  , class MarginBottom
+  , class MarginHorizontal
+  , class MarginLeft
+  , class MarginRight
+  , class MarginTop
+  , class MarginVertical
+  , margin
+  , marginBottom
+  , marginHorizontal
+  , marginLeft
+  , marginRight
+  , marginTop
+  , marginVertical
+  , MarginAuto(..)
+  , marginAuto
+  , class Width
+  , class Height
+  , width
+  , height
+  , class MaxHeight
+  , maxHeight
+  , class MaxWidth
+  , maxWidth
+  , class MinHeight
+  , minHeight
+  , class MinWidth
+  , minWidth
+  , Overflow
+  , scroll
+  , overflow
+  , class Padding
+  , class PaddingBottom
+  , class PaddingHorizontal
+  , class PaddingLeft
+  , class PaddingRight
+  , class PaddingTop
+  , class PaddingVertical
+  , padding
+  , paddingBottom
+  , paddingHorizontal
+  , paddingLeft
+  , paddingRight
+  , paddingTop
+  , paddingVertical
+  , BackfaceVisibility
+  , backfaceVisibility
+  , borderBottomWidth
+  , borderLeftWidth
+  , borderRightWidth
+  , borderTopWidth
+  , borderWidth
+  , borderBottomColor
+  , borderBottomLeftRadius
+  , borderBottomRightRadius
+  , borderColor
+  , borderLeftColor
+  , borderRadius
+  , borderRightColor
+  , borderTopColor
+  , borderTopLeftRadius
+  , borderTopRightRadius
+  , opacity
+  , elevation
+  , zIndex
+  , ResizeMode
+  , cover
+  , contain
+  , stretch
+  , repeat
+  , resizeMode
+  , hairlineWidth
+  , shadowColor
+  , shadowOffset
+  , shadowOpacity
+  , shadowRadius
+  , class MkPercent
+  , percent
+  , Percent
+  ) where
 
 import Prelude
-
 import React.Basic.Native.PropTypes (class CenterEnum, class VisibilityEnum)
 import React.Basic.Native.PropTypes.Color (Color)
 import Unsafe.Coerce (unsafeCoerce)
@@ -58,7 +140,8 @@ foreign import hairlineWidth :: Int
 position :: Position -> StyleProp
 position = unsafeStyleProp "position"
 
-newtype Position = Position String
+newtype Position
+  = Position String
 
 absolute :: Position
 absolute = Position "absolute"
@@ -129,10 +212,8 @@ instance numberBottom :: Bottom Number where
 instance percentBottom :: Bottom Percent where
   bottom = unsafeStyleProp "bottom"
 
-
 flex :: Int -> StyleProp
 flex = unsafeStyleProp "flex"
-
 
 class FlexBasis a where
   flexBasis :: a -> StyleProp
@@ -147,6 +228,12 @@ instance percentFlexBasis :: FlexBasis Percent where
   flexBasis = unsafeStyleProp "flexBasis"
 
 -- | Setting margin has the same effect as setting each of marginTop, marginLeft, marginBottom, and marginRight. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin for more details.
+newtype MarginAuto
+  = MarginAuto String
+
+marginAuto :: MarginAuto
+marginAuto = MarginAuto "auto"
+
 class Margin a where
   margin :: a -> StyleProp
 
@@ -157,6 +244,9 @@ instance numberMargin :: Margin Number where
   margin = unsafeStyleProp "margin"
 
 instance percentMargin :: Margin Percent where
+  margin = unsafeStyleProp "margin"
+
+instance autoMargin :: Margin MarginAuto where
   margin = unsafeStyleProp "margin"
 
 -- | marginBottom works like margin-bottom in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom for more details.
@@ -237,8 +327,8 @@ instance numberMarginVertical :: MarginVertical Number where
 instance percentMarginVertical :: MarginVertical Percent where
   marginVertical = unsafeStyleProp "marginVertical"
 
-
-newtype Percent = Percent String
+newtype Percent
+  = Percent String
 
 class MkPercent a where
   percent :: a -> Percent
@@ -265,7 +355,6 @@ instance percentWidth :: Width Percent where
 
 -- width :: Int -> StyleProp
 -- width = unsafeStyleProp "width"
-
 -- | height sets the height of this component.
 -- | It works similarly to height in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See https://developer.mozilla.org/en-US/docs/Web/CSS/height for more details.
 class Height a where
@@ -279,7 +368,6 @@ instance numberHeight :: Height Number where
 
 instance percentHeight :: Height Percent where
   height = unsafeStyleProp "height"
-
 
 -- | see: https://facebook.github.io/react-native/docs/layout-props#maxheight
 class MaxHeight a where
@@ -307,7 +395,6 @@ instance numberMaxWidth :: MaxWidth Number where
 instance percentMaxWidth :: MaxWidth Percent where
   maxWidth = unsafeStyleProp "maxWidth"
 
-
 -- | see: https://facebook.github.io/react-native/docs/layout-props#minheight
 class MinHeight a where
   minHeight :: a -> StyleProp
@@ -334,7 +421,8 @@ instance numberMinWidth :: MinWidth Number where
 instance percentMinWidth :: MinWidth Percent where
   minWidth = unsafeStyleProp "minWidth"
 
-newtype Overflow = Overflow String
+newtype Overflow
+  = Overflow String
 
 instance overflowV :: VisibilityEnum Overflow where
   visible = Overflow "visible"
@@ -342,7 +430,6 @@ instance overflowV :: VisibilityEnum Overflow where
 
 scroll :: Overflow
 scroll = Overflow "scroll"
-
 
 -- | overflow controls how a children are measured and displayed. overflow: hidden causes views to be clipped while overflow: scroll causes views to be measured independently of their parents main axis.It works likeoverflow` in CSS (default: visible). See https://developer.mozilla.org/en/docs/Web/CSS/overflow for more details.
 overflow :: Overflow -> StyleProp
@@ -439,7 +526,8 @@ instance numberPaddingVertical :: PaddingVertical Number where
 instance percentPaddingVertical :: PaddingVertical Percent where
   paddingVertical = unsafeStyleProp "paddingVertical"
 
-newtype BackfaceVisibility = BackfaceVisibility String
+newtype BackfaceVisibility
+  = BackfaceVisibility String
 
 instance visibleBackface :: VisibilityEnum BackfaceVisibility where
   hidden = BackfaceVisibility "hidden"
@@ -447,7 +535,6 @@ instance visibleBackface :: VisibilityEnum BackfaceVisibility where
 
 backfaceVisibility :: BackfaceVisibility -> StyleProp
 backfaceVisibility = unsafeStyleProp "backfaceVisibility"
-
 
 -- | borderBottomWidth works like border-bottom-width in CSS. See https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width for more details.
 borderBottomWidth :: Int -> StyleProp
@@ -469,7 +556,8 @@ borderTopWidth = unsafeStyleProp "borderTopWidth"
 borderWidth :: Int -> StyleProp
 borderWidth = unsafeStyleProp "borderWidth"
 
-newtype BorderStyle = BorderStyle String
+newtype BorderStyle
+  = BorderStyle String
 
 solid :: BorderStyle
 solid = BorderStyle "solid"
@@ -522,7 +610,8 @@ elevation = unsafeStyleProp "elevation"
 zIndex :: Int -> StyleProp
 zIndex = unsafeStyleProp "zIndex"
 
-newtype ResizeMode = ResizeMode String
+newtype ResizeMode
+  = ResizeMode String
 
 cover :: ResizeMode
 cover = ResizeMode "cover"
